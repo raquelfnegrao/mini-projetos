@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>APP Clima</title>
+</head>
+<body>
+    <div class="card">
+        <div class="busca">
+            <input type="text" placeholder="Digite a cidade">
+            <button><img src="img/lupa.png"></button>
+        </div>
+        <div class="error">
+            <p>Cidade inválida</p>
+        </div>
+        <div class="clima">
+            <img src="" class="icone-clima">
+            <h1 class="tempo"></h1>
+            <h2 class="cidade"></h2>
+            <div class="detalhes">
+                <div class="coluna">
+                    <img src="img/umidade.png">
+                    <div>
+                        <p class="umidade"></p>
+                        <p>Umidade</p>
+                    </div>
+                </div>
+                <div class="coluna2">
+                    <img src="img/vento.png">
+                    <div>
+                        <p class="vento"></p>
+                        <p>Velocidade do vento</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const APIKey = "3e1a9504a3c2ff6ac8c9d9b02699495d"
+        const APIurl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q="
+        const buscar = document.querySelector(".busca input")
+        const buscaBtn = document.querySelector(".busca button")
+        const iconeClima = document.querySelector(".icone-clima")
+
+        async function checkClima(cidade) {
+
+        const response = await fetch(APIurl + cidade + `&appid=${APIKey}`)
+
+            if(response.status == 404){
+                document.querySelector(".error").style.display = "block"
+                document.querySelector(".clima").style.display = "none"
+            } else {
+                var data = await response.json()
+
+                document.querySelector(".cidade").innerHTML = data.name
+                document.querySelector(".tempo").innerHTML = Math.round(data.main.temp) + "ºC"
+                document.querySelector(".umidade").innerHTML = data.main.humidity + "%"
+                document.querySelector(".vento").innerHTML = data.wind.speed + " Km/h"
+
+                if(data.weather[0].main == "Clouds"){
+                iconeClima.src = "img/nublado.png"
+                } else if (data.weather[0].main == "Clear"){
+                iconeClima.src = "img/sol.png"
+                } else if (data.weather[0].main == "Rain"){
+                iconeClima.src = "img/chuva.png"
+                } else if (data.weather[0].main == "Drizzle"){
+                iconeClima.src = "img/solchuva.png"
+                } else if (data.weather[0].main == "Mist"){
+                iconeClima.src = "img/neve.png"
+                } 
+
+                document.querySelector(".clima").style.display = "block"
+                document.querySelector(".error").style.display = "none"
+            }
+
+        }
+
+        buscaBtn.addEventListener("click", ()=>{
+            checkClima(buscar.value)
+        })
+
+    </script>
+
+</body>
+</html>

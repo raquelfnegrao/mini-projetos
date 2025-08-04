@@ -25,6 +25,6 @@ Aqui você encontra uma aplicação desenvolvida com Javascript, HTML e CSS.
 
 1. Clone este repositório:  
    ```bash
-   git clone https://github.com/raquelfnegrao/mini-projetos/APPClima.git
-   cd mini-projetos/APPClima
+   git clone https://github.com/raquelfnegrao/mini-projetos/ToDoList.git
+   cd mini-projetos/ToDoList
  

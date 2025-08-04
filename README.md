@@ -9,20 +9,20 @@ Aqui você encontra uma coleção de projetos práticos e divertidos que mostram
 ## 📂 O que você vai encontrar
 
 - **📡 API Simples**  
-  Endpoints REST criados do zero com Node.js — ideais para quem quer aprender o básico de APIs.
+  Endpoints REST criados do zero com Node.js.
 
 - **🧪 Exemplos de Requests**  
-  Testes usando **curl** ou **Postman** para facilitar a exploração e entendimento das APIs.
+  Testes usando **curl** ou **Postman** em APIs.
 
 - **📌 Outras Demonstrações**  
-  Mini-front-ends, automações, scripts e outras ferramentas para praticar e estudar.
+  Mini-front-ends, automações, scripts e outras ferramentas.
 
 ---
 
 ## 🛠️ Ferramentas e Tecnologias
 
 - Node.js  
-- Express (ou Fastify)  
+- Express 
 - Ambiente de desenvolvimento com **nodemon** (associação automática de reinício)  
 - Postman / Insomnia / cURL para testar as APIs  
 - Git e GitHub para versionamento e documentação
